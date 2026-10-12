@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "sourceVisibility": "private",
+  "distributionVisibility": "public",
+  "githubRelease": {
+    "status": "published",
+    "url": "https://github.com/caglarkc/architecture-catalog-distribution/releases/tag/v0.1.0",
+    "anonymousAssetConsistency": "passed"
+  },
+  "npm": {
+    "package": "@caglarkc/architecture-catalog",
+    "status": "pending_authentication",
+    "blocker": "ENEEDAUTH",
+    "preparedTarball": "caglarkc-architecture-catalog-0.1.0.tgz",
+    "bytes": 21264,
+    "sha256": "c3fde081098002be8eb8e9581b54439bc94111f1b67d8963cbbcca14a3e11f56"
+  },
+  "runtimeValidation": "not_run"
+}
