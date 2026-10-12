@@ -1,8 +1,8 @@
 {
   "status": "passed",
   "tarball": "caglarkc-architecture-catalog-0.1.0.tgz",
-  "bytes": 20862,
-  "sha256": "949b882b2c72b3efcd3b50ea1d6aa38b8b46ae6d79a757bf0ba0d12f47d39044",
+  "bytes": 21264,
+  "sha256": "c3fde081098002be8eb8e9581b54439bc94111f1b67d8963cbbcca14a3e11f56",
   "files": [
     "package/LICENSE",
     "package/dist/artifacts.js",
