@@ -1,0 +1,422 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "releaseVersion": {
+      "type": "string"
+    },
+    "templates": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "version": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "projectTypes": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]*$"
+            }
+          },
+          "architecture": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "components": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*$"
+                },
+                "roles": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                  }
+                },
+                "languages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                  }
+                },
+                "runtimes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "frameworks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*$"
+                      },
+                      "version": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "version"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "roles",
+                "languages",
+                "runtimes",
+                "frameworks"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*$"
+                },
+                "to": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*$"
+                },
+                "protocol": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "from",
+                "to",
+                "protocol",
+                "description"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "parameters": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "name",
+                    "port",
+                    "string"
+                  ]
+                },
+                "required": {
+                  "default": false,
+                  "type": "boolean"
+                },
+                "default": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                },
+                "pattern": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "secret": {
+                  "type": "boolean",
+                  "const": false
+                }
+              },
+              "required": [
+                "type",
+                "required",
+                "description",
+                "secret"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "defaultPreset": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "presets": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*$"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "generatorRange": {
+                  "type": "string"
+                },
+                "artifact": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "size": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "url",
+                    "sha256",
+                    "size"
+                  ],
+                  "additionalProperties": false
+                },
+                "requirements": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "tool": {
+                        "type": "string"
+                      },
+                      "version": {
+                        "type": "string"
+                      },
+                      "phase": {
+                        "type": "string",
+                        "enum": [
+                          "generate",
+                          "install",
+                          "run"
+                        ]
+                      },
+                      "environment": {
+                        "default": [],
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "tool",
+                      "phase",
+                      "environment"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "commands": {
+                  "type": "object",
+                  "properties": {
+                    "install": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "argv": {
+                            "minItems": 1,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "cwd": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "argv",
+                          "cwd"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "run": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "argv": {
+                            "minItems": 1,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "cwd": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "argv",
+                          "cwd"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "install",
+                    "run"
+                  ],
+                  "additionalProperties": false
+                },
+                "interpolate": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "dependencyFiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "validation": {
+                  "type": "object",
+                  "properties": {
+                    "platform": {
+                      "type": "string",
+                      "const": "not_run"
+                    },
+                    "generation": {
+                      "type": "string",
+                      "const": "not_run"
+                    },
+                    "install": {
+                      "type": "string",
+                      "const": "not_run"
+                    },
+                    "example": {
+                      "type": "string",
+                      "const": "not_run"
+                    },
+                    "provider": {
+                      "type": "string",
+                      "const": "not_run"
+                    }
+                  },
+                  "required": [
+                    "platform",
+                    "generation",
+                    "install",
+                    "example",
+                    "provider"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "id",
+                "description",
+                "generatorRange",
+                "artifact",
+                "requirements",
+                "commands",
+                "interpolate",
+                "dependencyFiles",
+                "validation"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "firstExample": {
+            "type": "string"
+          },
+          "extensionPoint": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string",
+            "const": "MIT"
+          },
+          "author": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "title",
+          "purpose",
+          "projectTypes",
+          "architecture",
+          "components",
+          "relationships",
+          "parameters",
+          "defaultPreset",
+          "presets",
+          "firstExample",
+          "extensionPoint",
+          "license",
+          "author"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "releaseVersion",
+    "templates"
+  ],
+  "additionalProperties": false
+}

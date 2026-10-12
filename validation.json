@@ -1,0 +1,75 @@
+{
+  "version": "0.1.0",
+  "checks": {
+    "build": "passed",
+    "types": "passed",
+    "catalog": "passed",
+    "archives": "passed",
+    "manifests": "passed"
+  },
+  "runtime": {
+    "platforms": "not_run",
+    "docker": "not_run",
+    "generatedApplications": "not_run",
+    "provider": "not_run",
+    "npmUsageScenarios": "not_run"
+  },
+  "inventory": [
+    {
+      "template": "python-fastapi-api",
+      "preset": "minimal",
+      "artifact": "python-fastapi-api-minimal-0.1.0.zip",
+      "bytes": 9813,
+      "files": 17,
+      "sha256": "3c7818f1d62c43a8819b2fb09392cc8f8590deb9da8594c51f6e1c82e9cccdbb"
+    },
+    {
+      "template": "typescript-nestjs-api",
+      "preset": "minimal",
+      "artifact": "typescript-nestjs-api-minimal-0.1.0.zip",
+      "bytes": 18445,
+      "files": 13,
+      "sha256": "8bdb82552b5b58f161aa1c7a9bf5dcb291a3c87369e92389fcdcf186e10631dc"
+    },
+    {
+      "template": "python-langgraph-agent-api",
+      "preset": "mock",
+      "artifact": "python-langgraph-agent-api-mock-0.1.0.zip",
+      "bytes": 31151,
+      "files": 14,
+      "sha256": "f61b5489ce4bcd736b6521bc8515f168973ef0c048c9441e6d843c875cbe7691"
+    },
+    {
+      "template": "python-langgraph-agent-api",
+      "preset": "openai",
+      "artifact": "python-langgraph-agent-api-openai-0.1.0.zip",
+      "bytes": 37132,
+      "files": 14,
+      "sha256": "bc7a55aec07d8ab56fa43dcf3bc299c8a0530e0869e034883bd15a54aa0ec201"
+    },
+    {
+      "template": "python-typer-cli",
+      "preset": "minimal",
+      "artifact": "python-typer-cli-minimal-0.1.0.zip",
+      "bytes": 5445,
+      "files": 12,
+      "sha256": "558475a425ba7ef2a4985c8bfa4cced3b6c1a5c3b21a7828eee13c372abc170e"
+    },
+    {
+      "template": "react-fastapi-fullstack",
+      "preset": "local",
+      "artifact": "react-fastapi-fullstack-local-0.1.0.zip",
+      "bytes": 21263,
+      "files": 26,
+      "sha256": "989b7d7138f9cb7ed33a18f79e2aed5da0e73d79a5078a365f1a09cb1fd6cf64"
+    },
+    {
+      "template": "python-fastapi-microservices",
+      "preset": "compose",
+      "artifact": "python-fastapi-microservices-compose-0.1.0.zip",
+      "bytes": 20076,
+      "files": 22,
+      "sha256": "a0f7496efd49ba1607e39d716de9c51385f5d04814b4b93292f0285295d1660c"
+    }
+  ]
+}

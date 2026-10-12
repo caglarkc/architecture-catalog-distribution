@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "tarball": "caglarkc-architecture-catalog-0.1.0.tgz",
+  "bytes": 20862,
+  "sha256": "949b882b2c72b3efcd3b50ea1d6aa38b8b46ae6d79a757bf0ba0d12f47d39044",
+  "files": [
+    "package/LICENSE",
+    "package/dist/artifacts.js",
+    "package/dist/catalog.js",
+    "package/dist/cli.js",
+    "package/dist/errors.js",
+    "package/dist/execution.js",
+    "package/dist/generator.js",
+    "package/dist/index.js",
+    "package/dist/schema.js",
+    "package/catalog/catalog.json",
+    "package/schemas/catalog.schema.json",
+    "package/package.json",
+    "package/CHANGELOG.md",
+    "package/README.md",
+    "package/dist/artifacts.d.ts",
+    "package/dist/catalog.d.ts",
+    "package/dist/cli.d.ts",
+    "package/dist/errors.d.ts",
+    "package/dist/execution.d.ts",
+    "package/dist/generator.d.ts",
+    "package/dist/index.d.ts",
+    "package/dist/schema.d.ts"
+  ],
+  "npmUsageScenarios": "not_run"
+}

@@ -1,0 +1,1042 @@
+{
+  "schemaVersion": 1,
+  "releaseVersion": "0.1.0",
+  "templates": [
+    {
+      "id": "python-fastapi-api",
+      "version": "0.1.0",
+      "title": "Python / FastAPI API",
+      "purpose": "A validated API with separate API, application, domain and infrastructure layers.",
+      "projectTypes": [
+        "api"
+      ],
+      "architecture": "layered",
+      "components": [
+        {
+          "id": "api",
+          "roles": [
+            "api"
+          ],
+          "languages": [
+            "python"
+          ],
+          "runtimes": [
+            "python-3.12"
+          ],
+          "frameworks": [
+            {
+              "id": "fastapi",
+              "version": "0.143.0"
+            }
+          ]
+        }
+      ],
+      "relationships": [],
+      "parameters": {
+        "projectName": {
+          "type": "name",
+          "required": true,
+          "description": "Lowercase project name with hyphens",
+          "secret": false
+        },
+        "apiPort": {
+          "type": "port",
+          "required": true,
+          "default": 8000,
+          "description": "Local API port",
+          "secret": false
+        }
+      },
+      "defaultPreset": "minimal",
+      "presets": [
+        {
+          "id": "minimal",
+          "description": "Layered FastAPI starter",
+          "generatorRange": ">=0.1.0 <0.2.0",
+          "artifact": {
+            "url": "https://github.com/caglarkc/architecture-catalog-distribution/releases/download/v0.1.0/python-fastapi-api-minimal-0.1.0.zip",
+            "sha256": "3c7818f1d62c43a8819b2fb09392cc8f8590deb9da8594c51f6e1c82e9cccdbb",
+            "size": 9813
+          },
+          "requirements": [
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "generate",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "run",
+              "environment": []
+            }
+          ],
+          "commands": {
+            "install": [
+              {
+                "argv": [
+                  "uv",
+                  "sync",
+                  "--frozen"
+                ],
+                "cwd": "."
+              }
+            ],
+            "run": [
+              {
+                "argv": [
+                  "uv",
+                  "run",
+                  "--frozen",
+                  "uvicorn",
+                  "app.main:app",
+                  "--host",
+                  "127.0.0.1",
+                  "--port",
+                  "{{apiPort}}"
+                ],
+                "cwd": "."
+              }
+            ]
+          },
+          "interpolate": [
+            "app/main.py",
+            "README.md"
+          ],
+          "dependencyFiles": [
+            "pyproject.toml",
+            "uv.lock"
+          ],
+          "validation": {
+            "platform": "not_run",
+            "generation": "not_run",
+            "install": "not_run",
+            "example": "not_run",
+            "provider": "not_run"
+          }
+        }
+      ],
+      "firstExample": "GET /health; POST /echo with {\"text\":\"hello\"}.",
+      "extensionPoint": "app/api/routes.py and app/application/echo.py",
+      "license": "MIT",
+      "author": "caglarkc"
+    },
+    {
+      "id": "typescript-nestjs-api",
+      "version": "0.1.0",
+      "title": "TypeScript / NestJS API",
+      "purpose": "A modular API with validation and feature controller/service boundaries.",
+      "projectTypes": [
+        "api"
+      ],
+      "architecture": "modular",
+      "components": [
+        {
+          "id": "api",
+          "roles": [
+            "api"
+          ],
+          "languages": [
+            "typescript"
+          ],
+          "runtimes": [
+            "node-24"
+          ],
+          "frameworks": [
+            {
+              "id": "nestjs",
+              "version": "12.1.2"
+            }
+          ]
+        }
+      ],
+      "relationships": [],
+      "parameters": {
+        "projectName": {
+          "type": "name",
+          "required": true,
+          "description": "Lowercase project name with hyphens",
+          "secret": false
+        },
+        "apiPort": {
+          "type": "port",
+          "required": true,
+          "default": 3000,
+          "description": "Local API port",
+          "secret": false
+        }
+      },
+      "defaultPreset": "minimal",
+      "presets": [
+        {
+          "id": "minimal",
+          "description": "NestJS feature-module starter",
+          "generatorRange": ">=0.1.0 <0.2.0",
+          "artifact": {
+            "url": "https://github.com/caglarkc/architecture-catalog-distribution/releases/download/v0.1.0/typescript-nestjs-api-minimal-0.1.0.zip",
+            "sha256": "8bdb82552b5b58f161aa1c7a9bf5dcb291a3c87369e92389fcdcf186e10631dc",
+            "size": 18445
+          },
+          "requirements": [
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "generate",
+              "environment": []
+            },
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "npm",
+              "version": ">=11",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "npm",
+              "version": ">=11",
+              "phase": "run",
+              "environment": []
+            }
+          ],
+          "commands": {
+            "install": [
+              {
+                "argv": [
+                  "npm",
+                  "ci"
+                ],
+                "cwd": "."
+              }
+            ],
+            "run": [
+              {
+                "argv": [
+                  "npm",
+                  "start"
+                ],
+                "cwd": "."
+              }
+            ]
+          },
+          "interpolate": [
+            ".env.example",
+            "README.md",
+            "src/main.ts"
+          ],
+          "dependencyFiles": [
+            "package-lock.json",
+            "package.json"
+          ],
+          "validation": {
+            "platform": "not_run",
+            "generation": "not_run",
+            "install": "not_run",
+            "example": "not_run",
+            "provider": "not_run"
+          }
+        }
+      ],
+      "firstExample": "GET /health; POST /echo with {\"text\":\"hello\"}.",
+      "extensionPoint": "src/echo/ and src/app.module.ts",
+      "license": "MIT",
+      "author": "caglarkc"
+    },
+    {
+      "id": "python-langgraph-agent-api",
+      "version": "0.1.0",
+      "title": "Python / FastAPI / LangGraph agent API",
+      "purpose": "An API calling a graph and text-transform tool, with mock or OpenAI mode.",
+      "projectTypes": [
+        "agent",
+        "api"
+      ],
+      "architecture": "agent-graph",
+      "components": [
+        {
+          "id": "agent-api",
+          "roles": [
+            "api",
+            "agent-orchestrator"
+          ],
+          "languages": [
+            "python"
+          ],
+          "runtimes": [
+            "python-3.12"
+          ],
+          "frameworks": [
+            {
+              "id": "fastapi",
+              "version": "0.143.0"
+            },
+            {
+              "id": "langgraph",
+              "version": "1.2.14"
+            }
+          ]
+        }
+      ],
+      "relationships": [],
+      "parameters": {
+        "projectName": {
+          "type": "name",
+          "required": true,
+          "description": "Lowercase project name with hyphens",
+          "secret": false
+        },
+        "apiPort": {
+          "type": "port",
+          "required": true,
+          "default": 8000,
+          "description": "Local API port",
+          "secret": false
+        }
+      },
+      "defaultPreset": "mock",
+      "presets": [
+        {
+          "id": "mock",
+          "description": "Deterministic uppercase graph without provider dependency",
+          "generatorRange": ">=0.1.0 <0.2.0",
+          "artifact": {
+            "url": "https://github.com/caglarkc/architecture-catalog-distribution/releases/download/v0.1.0/python-langgraph-agent-api-mock-0.1.0.zip",
+            "sha256": "f61b5489ce4bcd736b6521bc8515f168973ef0c048c9441e6d843c875cbe7691",
+            "size": 31151
+          },
+          "requirements": [
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "generate",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "run",
+              "environment": []
+            }
+          ],
+          "commands": {
+            "install": [
+              {
+                "argv": [
+                  "uv",
+                  "sync",
+                  "--frozen"
+                ],
+                "cwd": "."
+              }
+            ],
+            "run": [
+              {
+                "argv": [
+                  "uv",
+                  "run",
+                  "--frozen",
+                  "uvicorn",
+                  "app.main:app",
+                  "--host",
+                  "127.0.0.1",
+                  "--port",
+                  "{{apiPort}}"
+                ],
+                "cwd": "."
+              }
+            ]
+          },
+          "interpolate": [
+            "app/main.py",
+            "README.md"
+          ],
+          "dependencyFiles": [
+            "pyproject.toml",
+            "uv.lock"
+          ],
+          "validation": {
+            "platform": "not_run",
+            "generation": "not_run",
+            "install": "not_run",
+            "example": "not_run",
+            "provider": "not_run"
+          }
+        },
+        {
+          "id": "openai",
+          "description": "Responses API with gpt-5.4-mini-2026-03-17 and function calling; langchain-openai 1.7.0",
+          "generatorRange": ">=0.1.0 <0.2.0",
+          "artifact": {
+            "url": "https://github.com/caglarkc/architecture-catalog-distribution/releases/download/v0.1.0/python-langgraph-agent-api-openai-0.1.0.zip",
+            "sha256": "bc7a55aec07d8ab56fa43dcf3bc299c8a0530e0869e034883bd15a54aa0ec201",
+            "size": 37132
+          },
+          "requirements": [
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "generate",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "openai",
+              "version": "gpt-5.4-mini-2026-03-17",
+              "phase": "run",
+              "environment": [
+                "OPENAI_API_KEY"
+              ]
+            }
+          ],
+          "commands": {
+            "install": [
+              {
+                "argv": [
+                  "uv",
+                  "sync",
+                  "--frozen"
+                ],
+                "cwd": "."
+              }
+            ],
+            "run": [
+              {
+                "argv": [
+                  "uv",
+                  "run",
+                  "--frozen",
+                  "uvicorn",
+                  "app.main:app",
+                  "--host",
+                  "127.0.0.1",
+                  "--port",
+                  "{{apiPort}}"
+                ],
+                "cwd": "."
+              }
+            ]
+          },
+          "interpolate": [
+            "app/main.py",
+            "README.md"
+          ],
+          "dependencyFiles": [
+            "pyproject.toml",
+            "uv.lock"
+          ],
+          "validation": {
+            "platform": "not_run",
+            "generation": "not_run",
+            "install": "not_run",
+            "example": "not_run",
+            "provider": "not_run"
+          }
+        }
+      ],
+      "firstExample": "POST /agent/run with {\"text\":\"hello\"}.",
+      "extensionPoint": "app/agent/graph.py and app/agent/tools.py",
+      "license": "MIT",
+      "author": "caglarkc"
+    },
+    {
+      "id": "python-typer-cli",
+      "version": "0.1.0",
+      "title": "Python / Typer CLI",
+      "purpose": "A CLI with command registration separated from reusable application logic.",
+      "projectTypes": [
+        "cli"
+      ],
+      "architecture": "layered",
+      "components": [
+        {
+          "id": "cli",
+          "roles": [
+            "cli"
+          ],
+          "languages": [
+            "python"
+          ],
+          "runtimes": [
+            "python-3.12"
+          ],
+          "frameworks": [
+            {
+              "id": "typer",
+              "version": "0.27.3"
+            }
+          ]
+        }
+      ],
+      "relationships": [],
+      "parameters": {
+        "projectName": {
+          "type": "name",
+          "required": true,
+          "description": "Lowercase project name with hyphens",
+          "secret": false
+        }
+      },
+      "defaultPreset": "minimal",
+      "presets": [
+        {
+          "id": "minimal",
+          "description": "A greeting command and explicit command extension point",
+          "generatorRange": ">=0.1.0 <0.2.0",
+          "artifact": {
+            "url": "https://github.com/caglarkc/architecture-catalog-distribution/releases/download/v0.1.0/python-typer-cli-minimal-0.1.0.zip",
+            "sha256": "558475a425ba7ef2a4985c8bfa4cced3b6c1a5c3b21a7828eee13c372abc170e",
+            "size": 5445
+          },
+          "requirements": [
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "generate",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "run",
+              "environment": []
+            }
+          ],
+          "commands": {
+            "install": [
+              {
+                "argv": [
+                  "uv",
+                  "sync",
+                  "--frozen"
+                ],
+                "cwd": "."
+              }
+            ],
+            "run": [
+              {
+                "argv": [
+                  "uv",
+                  "run",
+                  "--frozen",
+                  "starter",
+                  "greet",
+                  "Ada"
+                ],
+                "cwd": "."
+              }
+            ]
+          },
+          "interpolate": [
+            "app/main.py",
+            "README.md"
+          ],
+          "dependencyFiles": [
+            "pyproject.toml",
+            "uv.lock"
+          ],
+          "validation": {
+            "platform": "not_run",
+            "generation": "not_run",
+            "install": "not_run",
+            "example": "not_run",
+            "provider": "not_run"
+          }
+        }
+      ],
+      "firstExample": "uv run --frozen starter greet Ada",
+      "extensionPoint": "app/commands/ and app/main.py",
+      "license": "MIT",
+      "author": "caglarkc"
+    },
+    {
+      "id": "react-fastapi-fullstack",
+      "version": "0.1.0",
+      "title": "React / Vite + FastAPI full-stack",
+      "purpose": "A local form calling a Python API through a Vite development proxy.",
+      "projectTypes": [
+        "fullstack",
+        "web"
+      ],
+      "architecture": "client-server",
+      "components": [
+        {
+          "id": "frontend",
+          "roles": [
+            "frontend"
+          ],
+          "languages": [
+            "typescript"
+          ],
+          "runtimes": [
+            "browser",
+            "node-24-build"
+          ],
+          "frameworks": [
+            {
+              "id": "react",
+              "version": "19.3.0"
+            },
+            {
+              "id": "vite",
+              "version": "8.3.4"
+            }
+          ]
+        },
+        {
+          "id": "backend",
+          "roles": [
+            "api"
+          ],
+          "languages": [
+            "python"
+          ],
+          "runtimes": [
+            "python-3.12"
+          ],
+          "frameworks": [
+            {
+              "id": "fastapi",
+              "version": "0.143.0"
+            }
+          ]
+        }
+      ],
+      "relationships": [
+        {
+          "from": "frontend",
+          "to": "backend",
+          "protocol": "HTTP/JSON",
+          "description": "Development proxy /api to FastAPI"
+        }
+      ],
+      "parameters": {
+        "projectName": {
+          "type": "name",
+          "required": true,
+          "description": "Lowercase project name with hyphens",
+          "secret": false
+        },
+        "apiPort": {
+          "type": "port",
+          "required": true,
+          "default": 8000,
+          "description": "Local API port",
+          "secret": false
+        },
+        "frontendPort": {
+          "type": "port",
+          "required": true,
+          "default": 5173,
+          "description": "Vite local port",
+          "secret": false
+        }
+      },
+      "defaultPreset": "local",
+      "presets": [
+        {
+          "id": "local",
+          "description": "Local two-process full-stack workspace",
+          "generatorRange": ">=0.1.0 <0.2.0",
+          "artifact": {
+            "url": "https://github.com/caglarkc/architecture-catalog-distribution/releases/download/v0.1.0/react-fastapi-fullstack-local-0.1.0.zip",
+            "sha256": "989b7d7138f9cb7ed33a18f79e2aed5da0e73d79a5078a365f1a09cb1fd6cf64",
+            "size": 21263
+          },
+          "requirements": [
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "generate",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "python",
+              "version": "3.12.x",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "uv",
+              "version": ">=0.13.0",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "npm",
+              "version": ">=11",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "run",
+              "environment": []
+            },
+            {
+              "tool": "npm",
+              "version": ">=11",
+              "phase": "run",
+              "environment": []
+            }
+          ],
+          "commands": {
+            "install": [
+              {
+                "argv": [
+                  "uv",
+                  "sync",
+                  "--frozen"
+                ],
+                "cwd": "backend"
+              },
+              {
+                "argv": [
+                  "npm",
+                  "ci"
+                ],
+                "cwd": "frontend"
+              }
+            ],
+            "run": [
+              {
+                "argv": [
+                  "uv",
+                  "run",
+                  "--frozen",
+                  "uvicorn",
+                  "app.main:app",
+                  "--host",
+                  "127.0.0.1",
+                  "--port",
+                  "{{apiPort}}"
+                ],
+                "cwd": "backend"
+              },
+              {
+                "argv": [
+                  "npm",
+                  "run",
+                  "dev"
+                ],
+                "cwd": "frontend"
+              }
+            ]
+          },
+          "interpolate": [
+            "backend/app/main.py",
+            "frontend/index.html",
+            "frontend/src/App.tsx",
+            "frontend/vite.config.ts",
+            "README.md"
+          ],
+          "dependencyFiles": [
+            "backend/pyproject.toml",
+            "backend/uv.lock",
+            "frontend/package-lock.json",
+            "frontend/package.json"
+          ],
+          "validation": {
+            "platform": "not_run",
+            "generation": "not_run",
+            "install": "not_run",
+            "example": "not_run",
+            "provider": "not_run"
+          }
+        }
+      ],
+      "firstExample": "Submit the form and display the backend echo response.",
+      "extensionPoint": "frontend/src/App.tsx and backend/app/api/routes.py",
+      "license": "MIT",
+      "author": "caglarkc"
+    },
+    {
+      "id": "python-fastapi-microservices",
+      "version": "0.1.0",
+      "title": "FastAPI microservices with Traefik",
+      "purpose": "A local gateway and two internal HTTP services with JSON logs and request IDs.",
+      "projectTypes": [
+        "microservices",
+        "api"
+      ],
+      "architecture": "microservices",
+      "components": [
+        {
+          "id": "service-a",
+          "roles": [
+            "api"
+          ],
+          "languages": [
+            "python"
+          ],
+          "runtimes": [
+            "python-3.12"
+          ],
+          "frameworks": [
+            {
+              "id": "fastapi",
+              "version": "0.143.0"
+            }
+          ]
+        },
+        {
+          "id": "service-b",
+          "roles": [
+            "api"
+          ],
+          "languages": [
+            "python"
+          ],
+          "runtimes": [
+            "python-3.12"
+          ],
+          "frameworks": [
+            {
+              "id": "fastapi",
+              "version": "0.143.0"
+            }
+          ]
+        },
+        {
+          "id": "gateway",
+          "roles": [
+            "gateway"
+          ],
+          "languages": [],
+          "runtimes": [
+            "docker"
+          ],
+          "frameworks": [
+            {
+              "id": "traefik",
+              "version": "3.7.14"
+            }
+          ]
+        }
+      ],
+      "relationships": [
+        {
+          "from": "gateway",
+          "to": "service-a",
+          "protocol": "HTTP",
+          "description": "Prefix /a stripped before forwarding"
+        },
+        {
+          "from": "gateway",
+          "to": "service-b",
+          "protocol": "HTTP",
+          "description": "Prefix /b stripped before forwarding"
+        },
+        {
+          "from": "service-a",
+          "to": "service-b",
+          "protocol": "HTTP/JSON",
+          "description": "Request ID propagated to downstream service"
+        }
+      ],
+      "parameters": {
+        "projectName": {
+          "type": "name",
+          "required": true,
+          "description": "Lowercase project name with hyphens",
+          "secret": false
+        },
+        "gatewayPort": {
+          "type": "port",
+          "required": true,
+          "default": 8080,
+          "description": "Gateway loopback port",
+          "secret": false
+        }
+      },
+      "defaultPreset": "compose",
+      "presets": [
+        {
+          "id": "compose",
+          "description": "Compose v2 with Traefik file provider and two FastAPI services",
+          "generatorRange": ">=0.1.0 <0.2.0",
+          "artifact": {
+            "url": "https://github.com/caglarkc/architecture-catalog-distribution/releases/download/v0.1.0/python-fastapi-microservices-compose-0.1.0.zip",
+            "sha256": "a0f7496efd49ba1607e39d716de9c51385f5d04814b4b93292f0285295d1660c",
+            "size": 20076
+          },
+          "requirements": [
+            {
+              "tool": "node",
+              "version": "24.x",
+              "phase": "generate",
+              "environment": []
+            },
+            {
+              "tool": "docker-compose",
+              "version": "2.x",
+              "phase": "install",
+              "environment": []
+            },
+            {
+              "tool": "docker-compose",
+              "version": "2.x",
+              "phase": "run",
+              "environment": []
+            }
+          ],
+          "commands": {
+            "install": [
+              {
+                "argv": [
+                  "docker",
+                  "compose",
+                  "build"
+                ],
+                "cwd": "."
+              }
+            ],
+            "run": [
+              {
+                "argv": [
+                  "docker",
+                  "compose",
+                  "up",
+                  "--no-build"
+                ],
+                "cwd": "."
+              }
+            ]
+          },
+          "interpolate": [
+            "compose.yaml",
+            "README.md",
+            "services/service-a/app/main.py",
+            "services/service-b/app/main.py"
+          ],
+          "dependencyFiles": [
+            "compose.yaml",
+            "services/service-a/Dockerfile",
+            "services/service-a/pyproject.toml",
+            "services/service-a/uv.lock",
+            "services/service-b/Dockerfile",
+            "services/service-b/pyproject.toml",
+            "services/service-b/uv.lock"
+          ],
+          "validation": {
+            "platform": "not_run",
+            "generation": "not_run",
+            "install": "not_run",
+            "example": "not_run",
+            "provider": "not_run"
+          }
+        }
+      ],
+      "firstExample": "GET /a/aggregate through the gateway calls service A then B.",
+      "extensionPoint": "services/*/app/main.py and gateway/dynamic.yaml",
+      "license": "MIT",
+      "author": "caglarkc"
+    }
+  ]
+}

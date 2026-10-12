@@ -1,0 +1,8 @@
+3c7818f1d62c43a8819b2fb09392cc8f8590deb9da8594c51f6e1c82e9cccdbb  python-fastapi-api-minimal-0.1.0.zip
+8bdb82552b5b58f161aa1c7a9bf5dcb291a3c87369e92389fcdcf186e10631dc  typescript-nestjs-api-minimal-0.1.0.zip
+f61b5489ce4bcd736b6521bc8515f168973ef0c048c9441e6d843c875cbe7691  python-langgraph-agent-api-mock-0.1.0.zip
+bc7a55aec07d8ab56fa43dcf3bc299c8a0530e0869e034883bd15a54aa0ec201  python-langgraph-agent-api-openai-0.1.0.zip
+558475a425ba7ef2a4985c8bfa4cced3b6c1a5c3b21a7828eee13c372abc170e  python-typer-cli-minimal-0.1.0.zip
+989b7d7138f9cb7ed33a18f79e2aed5da0e73d79a5078a365f1a09cb1fd6cf64  react-fastapi-fullstack-local-0.1.0.zip
+a0f7496efd49ba1607e39d716de9c51385f5d04814b4b93292f0285295d1660c  python-fastapi-microservices-compose-0.1.0.zip
+bfe34347cbc6568efaf1e71e770aff3619318dfc45135d6a4550b6acf5a348ca  catalog.json
